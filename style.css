@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@300;700&display=swap");
+.page {
+  background-image: url("backgrounds/01.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: auto 100vh;
+  background-color: #ccc;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 93vh 7vh;
+      grid-template-rows: 93vh 7vh;
+}
+
+.video_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+}
+
+.yojijukugo {
+  background-color: rgba(255, 255, 255, 0.6);
+  font-family: 'Noto Serif JP', serif;
+  margin: 15vh auto 0;
+  padding: 2vw;
+  width: 42vh;
+  border-radius: 1vw;
+}
+
+.yojijukugo .yojijukugo_kanji {
+  font-weight: bold;
+  font-size: 7vh;
+  text-align: center;
+}
+
+.yojijukugo .yojijukugo_kana {
+  font-size: 2.8vh;
+  text-align: center;
+}
+
+.stats {
+  height: 8vh;
+  padding-bottom: 1vh;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.45);
+  color: rgba(0, 0, 0, 0.5);
+  font-family: 'Noto Sans JP', sans-serif;
+  text-align: right;
+  font-size: 4vh;
+}
+
+.stats .stats_time, .stats .stats_day, .stats .stats_date, .stats .stats_temp, .stats .music {
+  padding-right: 1.5vmax;
+}
+
+.music .material-icons {
+  font-size: 5vh;
+  vertical-align: middle;
+}
+
+.music .material-icons:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */

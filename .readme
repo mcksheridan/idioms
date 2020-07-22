@@ -1,0 +1,14 @@
+README
+
+This application gives the user a Japanese idiom and its reading.
+The idioms come from this API: https://corsservice.appspot.com/
+
+It also provides the user with some information about their current conditions (based on their GPS location): the temperatures, the date, the day of the week, and the time.
+
+The user also gets information about the current weather conditions via the background of the page. On mobile devices (or any device with a min-width of less than 1200 px), the user will see a JPEG image reflecting the current weather. On larger screens (i.e. a laptop or a desktop computer), the user will see an MP4 video.
+
+The videos came from http://www.videezy.com/
+The photos came from Pexels, from Francesco Ungaro, PhotoMIX Company, Donald Tong, brazil topno, Victor Miyata, Johannes Plenio, and Yuliya Ilkovych.
+
+The user can also play some calming lo-fi music to "start a good day."
+The music is courtesy of https://soundcloud.com/sakurahertz and was found on https://www.free-stock-music.com supported by https://creativecommons.org/licenses/by/3.0/deed.en_US

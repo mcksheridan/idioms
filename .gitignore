@@ -1,0 +1,6 @@
+*.css.map
+*.map
+*.prettierignore
+*.prettierrc.json
+*.eslintrc.js
+*.DS_store

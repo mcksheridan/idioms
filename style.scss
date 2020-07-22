@@ -1,0 +1,77 @@
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@300;700&display=swap');
+
+.page{
+    background-image: url('backgrounds/01.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: auto 100vh;
+    background-color: #ccc;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 93vh 7vh;
+}
+
+.video_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -1;
+}
+
+$yojijukugo-fontsize: 7vh;
+
+.yojijukugo {
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    font-family: 'Noto Serif JP', serif;
+    margin: 15vh auto 0;
+    padding: 2vw;
+    width: $yojijukugo-fontsize * 6;
+    border-radius: 1vw;
+    .yojijukugo_kanji {
+        font-weight: bold;
+        font-size: $yojijukugo-fontsize;
+        text-align: center;
+    }
+    .yojijukugo_kana {
+        font-size: $yojijukugo-fontsize / 2.5;
+        text-align: center;
+    }
+}
+
+.stats {
+    height: 8vh;
+    padding-bottom: 1vh;
+    width: 100vw;
+    background-color: rgba($color: #fff, $alpha: 0.45);
+    color: rgba($color: #000, $alpha: 0.5);
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: right;
+    font-size: 4vh;
+    .stats_time {
+        padding-right: 1.5vmax;
+    } .stats_day {
+        @extend .stats_time;
+    } .stats_date {
+        @extend .stats_time;
+    } .stats_temp {
+        @extend .stats_time;
+    }
+}
+
+.music {
+    @extend .stats_time;
+    .material-icons {
+        font-size: 5vh;
+        vertical-align: middle;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
