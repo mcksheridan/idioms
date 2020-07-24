@@ -11,6 +11,10 @@ window.onload = function idioms() {
     const statsDay = document.querySelector('.stats_day')
     const statsTime = document.querySelector('.stats_time')
 
+    // Sizing the window properly for mobile
+    const innerViewportHeight = window.innerHeight
+    page.style.height = `${innerViewportHeight}px`
+
     // Weather
     // Get latitude and logitude
     if (navigator.geolocation) {
@@ -19,7 +23,7 @@ window.onload = function idioms() {
             const lon = position.coords.longitude
             // Get API
             fetch(
-                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=edf0f0b1f6a9e6b8894414af60a20aad`
+                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid={appid}`
             )
                 .then((response) => response.json())
                 .then((data) => {

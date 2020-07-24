@@ -11,8 +11,8 @@
   overflow: hidden;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 93vh 7vh;
-      grid-template-rows: 93vh 7vh;
+  -ms-grid-rows: 93% 7%;
+      grid-template-rows: 93% 7%;
 }
 
 .video_background {
