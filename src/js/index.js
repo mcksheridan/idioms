@@ -1,5 +1,4 @@
 // DOM nodes
-const page = document.querySelector('.page');
 const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo_kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo_kana');
@@ -10,9 +9,14 @@ const statsDate = document.querySelector('.stats_date');
 const statsDay = document.querySelector('.stats_day');
 const statsTime = document.querySelector('.stats_time');
 
-// Sizing the window properly for mobile
-const innerViewportHeight = window.innerHeight;
-page.style.height = `${innerViewportHeight}px`;
+function initializeUI() {
+  // Sizing the window properly for mobile
+  const page = document.querySelector('.page');
+  const innerViewportHeight = window.innerHeight;
+  page.style.height = `${innerViewportHeight}px`;
+}
+
+initializeUI();
 
 // Weather
 // Get latitude and logitude
@@ -37,7 +41,8 @@ if (navigator.geolocation) {
           const videoBackground = document.querySelector('.video_background');
           videoBackground.src = `/../assets/backgrounds/${weather}.mp4`;
         }
-        page.style.backgroundImage = `url('/assets/backgrounds/${weather}.jpg'`;
+        const main = document.querySelector('.main');
+        main.style.backgroundImage = `url('/assets/backgrounds/${weather}.jpg'`;
       });
   });
 }
