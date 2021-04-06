@@ -11,8 +11,8 @@ const statsTime = document.querySelector('.stats_time');
 
 class Weather {
   constructor() {
-    this.latitude = undefined;
-    this.longitude = undefined;
+    this.temperature = undefined;
+    this.weatherCode = undefined;
   }
 }
 
@@ -27,18 +27,24 @@ function initializeUI() {
 
 initializeUI();
 
-const updateLocation = () => {
+const updateWeatherConditions = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude } = position.coords;
       const { longitude } = position.coords;
-      weatherConditions.latitude = latitude;
-      weatherConditions.longitude = longitude;
+      fetch(
+        `http://localhost:3000/weather?lat=${latitude}&lon=${longitude}`,
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          weatherConditions.temperature = data.main.temp;
+          weatherConditions.weatherCode = data.weather[0].icon.slice(0, 2);
+        });
     });
   }
 };
 
-updateLocation();
+updateWeatherConditions();
 
 // Weather
 // Get latitude and logitude
