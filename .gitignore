@@ -4,3 +4,4 @@
 *.prettierrc.json
 *.eslintrc.js
 *.DS_store
+node_modules
