@@ -27,6 +27,22 @@ function initializeUI() {
 
 initializeUI();
 
+const updateWeatherUI = () => {
+  // Set temperature
+  statsTemp.textContent = `${(weatherConditions.temperature - 273.15).toFixed(0)}°C`;
+  // Set weather background
+  const mediaQuery = window.matchMedia('(min-device-width: 1200px)');
+  // Only set video background for large screens
+  if (mediaQuery.matches) {
+    video.innerHTML = '<video src="" type="video/mp4" class="video_background" autoplay loop muted></video>';
+    const videoBackground = document.querySelector('.video_background');
+    videoBackground.src = `/../assets/backgrounds/${weatherConditions.weatherCode}.mp4`;
+  }
+  // Smaller screens get a still background image
+  const main = document.querySelector('.main');
+  main.style.backgroundImage = `url('/assets/backgrounds/${weatherConditions.weatherCode}.jpg'`;
+};
+
 const updateWeatherConditions = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -39,41 +55,13 @@ const updateWeatherConditions = () => {
         .then((data) => {
           weatherConditions.temperature = data.main.temp;
           weatherConditions.weatherCode = data.weather[0].icon.slice(0, 2);
+          updateWeatherUI();
         });
     });
   }
 };
 
 updateWeatherConditions();
-
-// Weather
-// Get latitude and logitude
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition((position) => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    // Get API
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid={appid}`,
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // Set temperature
-        const { temp } = data.main;
-        statsTemp.innerText = `${(temp - 273.15).toFixed(0)}°C`;
-        // Set backgrounds
-        const weather = data.weather[0].icon.slice(0, 2);
-        const mediaQuery = window.matchMedia('(min-device-width: 1200px)');
-        if (mediaQuery.matches) {
-          video.innerHTML = '<video src="" type="video/mp4" class="video_background" autoplay loop muted></video>';
-          const videoBackground = document.querySelector('.video_background');
-          videoBackground.src = `/../assets/backgrounds/${weather}.mp4`;
-        }
-        const main = document.querySelector('.main');
-        main.style.backgroundImage = `url('/assets/backgrounds/${weather}.jpg'`;
-      });
-  });
-}
 
 // Yojijukugo
 function yojijukugo() {
