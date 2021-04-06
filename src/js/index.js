@@ -9,6 +9,15 @@ const statsDate = document.querySelector('.stats_date');
 const statsDay = document.querySelector('.stats_day');
 const statsTime = document.querySelector('.stats_time');
 
+class Weather {
+  constructor() {
+    this.latitude = undefined;
+    this.longitude = undefined;
+  }
+}
+
+const weatherConditions = new Weather();
+
 function initializeUI() {
   // Sizing the window properly for mobile
   const page = document.querySelector('.page');
@@ -17,6 +26,19 @@ function initializeUI() {
 }
 
 initializeUI();
+
+const updateLocation = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude } = position.coords;
+      const { longitude } = position.coords;
+      weatherConditions.latitude = latitude;
+      weatherConditions.longitude = longitude;
+    });
+  }
+};
+
+updateLocation();
 
 // Weather
 // Get latitude and logitude
