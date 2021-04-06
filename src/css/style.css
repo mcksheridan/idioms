@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@300;700&display=swap");
 .page {
-  background-image: url("backgrounds/01.jpg");
+  background-image: url("../assets/backgrounds/01.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: auto 100vh;
