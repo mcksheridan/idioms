@@ -12,4 +12,16 @@ export default function yojijukugo(req, res) {
     ];
     return yomiJukugo;
   }
+  async function getYojijukugo() {
+    const yomiJukugo = await getYomiJukugo();
+    const { yomi } = yomiJukugo[0];
+    const { jukugo } = yomiJukugo[1];
+    let imi;
+    const yojijukugoData = [
+      { yomi },
+      { jukugo },
+      { imi },
+    ];
+    return yojijukugoData;
+  }
 }
