@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
+import yojijukugo from './yojijukugo';
 
 dotenv.config();
 
@@ -34,5 +35,7 @@ app.get('/weather', (req, res) => {
   };
   getWeatherData();
 });
+
+app.get('/yojijukugo', yojijukugo);
 
 app.listen(process.env.PORT || PORT);
