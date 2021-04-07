@@ -1,4 +1,11 @@
 import fetch from 'node-fetch';
+import axios from 'axios';
+import { JSDOM } from 'jsdom';
+
+const escapeCharacters = (word) => {
+  const result = encodeURI(word);
+  return result;
+};
 
 export default function yojijukugo(req, res) {
   async function getYomiJukugo() {
@@ -11,6 +18,15 @@ export default function yojijukugo(req, res) {
       { jukugo },
     ];
     return yomiJukugo;
+  }
+  async function getImi(jukugo) {
+    const tango = escapeCharacters(jukugo);
+    const response = await axios.get(`https://dictionary.goo.ne.jp/word/${tango}/`);
+    const data = await response.data;
+    const html = new JSDOM(data);
+    const unparsedImi = html.window.document.querySelectorAll('.content-box, .contents_area, .meaning_area, .p10, .contents, .text')[0].textContent;
+    const imi = unparsedImi.trim();
+    return imi;
   }
   async function getYojijukugo() {
     const yomiJukugo = await getYomiJukugo();
