@@ -70,22 +70,19 @@ const updateYojijukugoUI = () => {
 
 // Yojijukugo
 function yojijukugo() {
-  // User has yojijukugo in session storage
+  // User does not have yojijukugo in session storage
   if (
-    sessionStorage.getItem('jukugo') !== null
-      && sessionStorage.getItem('yomi') !== null
+    sessionStorage.getItem('jukugo') === null
+      && sessionStorage.getItem('yomi') === null
   ) {
-    updateYojijukugoUI();
-  } else {
-    // User does not have yojijukugo in session storage
     fetch('https://corsservice.appspot.com/yojijukugo/api/')
       .then((response) => response.json())
       .then((data) => {
         sessionStorage.setItem('jukugo', JSON.stringify(data.jukugo));
         sessionStorage.setItem('yomi', JSON.stringify(data.yomi));
-        updateYojijukugoUI();
       });
   }
+  updateYojijukugoUI();
 }
 
 yojijukugo();
