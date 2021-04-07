@@ -32,7 +32,7 @@ export default function yojijukugo(req, res) {
     const yomiJukugo = await getYomiJukugo();
     const { yomi } = yomiJukugo[0];
     const { jukugo } = yomiJukugo[1];
-    let imi;
+    const imi = await getImi(jukugo);
     const yojijukugoData = [
       { yomi },
       { jukugo },
