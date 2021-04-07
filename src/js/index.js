@@ -63,6 +63,11 @@ const updateWeatherConditions = () => {
 
 updateWeatherConditions();
 
+const updateYojijukugoUI = () => {
+  yojijukugoKanji.textContent = JSON.parse(sessionStorage.getItem('jukugo'));
+  yojijukugoKana.textContent = JSON.parse(sessionStorage.getItem('yomi'));
+};
+
 // Yojijukugo
 function yojijukugo() {
   // User has yojijukugo in session storage
@@ -70,8 +75,7 @@ function yojijukugo() {
     sessionStorage.getItem('jukugo') !== null
       && sessionStorage.getItem('yomi') !== null
   ) {
-    yojijukugoKanji.innerText = JSON.parse(sessionStorage.getItem('jukugo'));
-    yojijukugoKana.innerText = JSON.parse(sessionStorage.getItem('yomi'));
+    updateYojijukugoUI();
   } else {
     // User does not have yojijukugo in session storage
     fetch('https://corsservice.appspot.com/yojijukugo/api/')
@@ -79,10 +83,7 @@ function yojijukugo() {
       .then((data) => {
         sessionStorage.setItem('jukugo', JSON.stringify(data.jukugo));
         sessionStorage.setItem('yomi', JSON.stringify(data.yomi));
-        yojijukugoKanji.innerText = JSON.parse(
-          sessionStorage.getItem('jukugo'),
-        );
-        yojijukugoKana.innerText = JSON.parse(sessionStorage.getItem('yomi'));
+        updateYojijukugoUI();
       });
   }
 }
