@@ -24,4 +24,9 @@ export default function yojijukugo(req, res) {
     ];
     return yojijukugoData;
   }
+  async function displayYojijukugo() {
+    const data = await getYojijukugo();
+    res.json(data);
+  }
+  displayYojijukugo();
 }
