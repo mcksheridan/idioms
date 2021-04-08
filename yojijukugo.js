@@ -21,12 +21,19 @@ export default function yojijukugo(req, res) {
   }
   async function getImi(jukugo) {
     const tango = escapeCharacters(jukugo);
-    const response = await axios.get(`https://dictionary.goo.ne.jp/word/${tango}/`);
-    const data = await response.data;
-    const html = new JSDOM(data);
-    const unparsedImi = html.window.document.querySelectorAll('.content-box, .contents_area, .meaning_area, .p10, .contents, .text')[0].textContent;
-    const imi = unparsedImi.trim();
-    return imi;
+    const result = [];
+    try {
+      const response = await axios.get(`https://dictionary.goo.ne.jp/word/${tango}/`);
+      const data = await response.data;
+      const html = new JSDOM(data);
+      const unparsedImi = html.window.document.querySelectorAll('.content-box, .contents_area, .meaning_area, .p10, .contents, .text')[0].textContent;
+      const imi = unparsedImi.trim();
+      result.push(imi);
+    } catch (error) {
+      result.push('申し訳ございませんが、この四字熟語の意味が検索できませんでした。');
+      console.error(error.message);
+    }
+    return result[0];
   }
   async function getYojijukugo() {
     const yomiJukugo = await getYomiJukugo();
