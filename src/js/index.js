@@ -96,9 +96,11 @@ playPause.addEventListener('click', () => {
   if (playPause.innerText === 'play_arrow') {
     audioPlayer.play();
     playPause.innerText = 'pause';
+    playPause.setAttribute('aria-label', 'pause');
   } else {
     audioPlayer.pause();
     playPause.innerText = 'play_arrow';
+    playPause.setAttribute('aria-label', 'play');
   }
 });
 
