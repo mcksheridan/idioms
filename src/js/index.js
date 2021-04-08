@@ -69,23 +69,25 @@ const updateYojijukugoUI = () => {
 };
 
 // Yojijukugo
-function yojijukugo() {
+async function updateYojijukugo() {
   // User does not have yojijukugo in session storage
   if (
-    sessionStorage.getItem('jukugo') === null
-      && sessionStorage.getItem('yomi') === null
+    sessionStorage.getItem('jukugo') === 'undefined'
+    || sessionStorage.getItem('jukugo') === null
   ) {
-    fetch('https://corsservice.appspot.com/yojijukugo/api/')
-      .then((response) => response.json())
-      .then((data) => {
-        sessionStorage.setItem('jukugo', JSON.stringify(data.jukugo));
-        sessionStorage.setItem('yomi', JSON.stringify(data.yomi));
-      });
+    const yojijukugoResponse = await fetch('http://localhost:3000/yojijukugo');
+    const yojijukugoData = await yojijukugoResponse.json();
+    const { jukugo } = await yojijukugoData[1];
+    const { yomi } = await yojijukugoData[0];
+    const { imi } = await yojijukugoData[2];
+    sessionStorage.setItem('jukugo', await JSON.stringify(jukugo));
+    sessionStorage.setItem('yomi', await JSON.stringify(yomi));
+    sessionStorage.setItem('imi', await JSON.stringify(imi));
   }
   updateYojijukugoUI();
 }
 
-yojijukugo();
+updateYojijukugo();
 
 // Bottom menu bar
 
