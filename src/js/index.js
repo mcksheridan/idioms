@@ -3,12 +3,12 @@ const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo_kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo_kana');
 const yojijukugoImi = document.querySelector('.yojijukugo_imi');
-const audioPlayer = document.querySelector('.music_player');
-const playPause = document.querySelector('.music_control');
-const statsTemp = document.querySelector('.stats_temp');
-const statsDate = document.querySelector('.stats_date');
-const statsDay = document.querySelector('.stats_day');
-const statsTime = document.querySelector('.stats_time');
+const audioPlayer = document.querySelector('.music__player');
+const playPause = document.querySelector('.music__control');
+const statsTemp = document.querySelector('.stats__temp');
+const statsDate = document.querySelector('.stats__date');
+const statsDay = document.querySelector('.stats__day');
+const statsTime = document.querySelector('.stats__time');
 
 class Weather {
   constructor() {
@@ -63,8 +63,6 @@ const updateWeatherConditions = () => {
 };
 
 updateWeatherConditions();
-
-console.log(weatherConditions.temperature);
 
 const updateYojijukugoUI = () => {
   yojijukugoKanji.textContent = JSON.parse(sessionStorage.getItem('jukugo'));

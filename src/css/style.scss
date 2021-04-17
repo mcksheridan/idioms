@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@300;700&display=swap');
 
 .page{
-    background-image: url('backgrounds/01.jpg');
+    background-image: url('../assets/backgrounds/01.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: auto 100vh;
     background-color: #ccc;
-    height: 100vh;
+    height: 90vh;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -54,19 +54,16 @@ $yojijukugo-fontsize: 7vh;
     font-family: 'Noto Sans JP', sans-serif;
     text-align: right;
     font-size: 4vh;
-    .stats_time {
+    > span {
         padding-right: 1.5vmax;
-    } .stats_day {
-        @extend .stats_time;
-    } .stats_date {
-        @extend .stats_time;
-    } .stats_temp {
-        @extend .stats_time;
     }
 }
 
 .music {
-    @extend .stats_time;
+    &__control {
+        background-color: inherit;
+        color: inherit;
+    }
     .material-icons {
         font-size: 5vh;
         vertical-align: middle;
