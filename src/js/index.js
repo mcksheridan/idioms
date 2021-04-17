@@ -2,6 +2,7 @@
 const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo_kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo_kana');
+const yojijukugoImi = document.querySelector('.yojijukugo_imi');
 const audioPlayer = document.querySelector('.music_player');
 const playPause = document.querySelector('.music_control');
 const statsTemp = document.querySelector('.stats_temp');
@@ -63,9 +64,12 @@ const updateWeatherConditions = () => {
 
 updateWeatherConditions();
 
+console.log(weatherConditions.temperature);
+
 const updateYojijukugoUI = () => {
   yojijukugoKanji.textContent = JSON.parse(sessionStorage.getItem('jukugo'));
   yojijukugoKana.textContent = JSON.parse(sessionStorage.getItem('yomi'));
+  yojijukugoImi.textContent = JSON.parse(sessionStorage.getItem('imi'));
 };
 
 // Yojijukugo
