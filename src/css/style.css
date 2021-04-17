@@ -1,12 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@300;700&display=swap");
-.video_background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-}
-
 .component {
   position: absolute;
   top: 0;
@@ -14,8 +6,8 @@
   height: 90vh;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 0% 93% 7%;
-      grid-template-rows: 0% 93% 7%;
+  -ms-grid-rows: 15% 75% 10%;
+      grid-template-rows: 15% 75% 10%;
   overflow: hidden;
   background-image: url("../assets/backgrounds/01.jpg");
   background-attachment: fixed;
@@ -24,37 +16,48 @@
   background-color: #ccc;
 }
 
+.video_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
 .yojijukugo {
   background-color: rgba(255, 255, 255, 0.6);
   font-family: 'Noto Serif JP', serif;
-  margin: 15vh auto 0;
+  margin: 0 auto;
   padding: 2vw;
-  width: 42vh;
+  width: 24rem;
   border-radius: 1vw;
+  height: 100%;
+  max-height: 300px;
   z-index: 2;
 }
 
 .yojijukugo__kanji {
   font-weight: bold;
-  font-size: 7vh;
+  font-size: 4rem;
   text-align: center;
 }
 
 .yojijukugo__kana {
-  font-size: 2.8vh;
+  font-size: 1.6rem;
   text-align: center;
 }
 
 .stats {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   z-index: 2;
-  height: 8vh;
-  padding-bottom: 1vh;
   width: 100vw;
   background-color: rgba(255, 255, 255, 0.45);
   color: rgba(0, 0, 0, 0.5);
   font-family: 'Noto Sans JP', sans-serif;
   text-align: right;
-  font-size: 4vh;
+  font-size: 2rem;
 }
 
 .stats > span {

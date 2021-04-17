@@ -1,13 +1,8 @@
 //Fonts
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@300;700&display=swap');
 
-.video_background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100vw;
-    min-height: 100vh;
-}
+// Variables
+$yojijukugo-fontsize: 4rem;
 
 .component {
     position: absolute;
@@ -15,7 +10,7 @@
     left: 0;
     height: 90vh;
     display: grid;
-    grid-template-rows: 0% 93% 7%;
+    grid-template-rows: 15% 75% 10%;
     overflow: hidden;
     background-image: url('../assets/backgrounds/01.jpg');
     background-attachment: fixed;
@@ -24,15 +19,23 @@
     background-color: #ccc;
 }
 
-$yojijukugo-fontsize: 7vh;
+.video_background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+}
 
 .yojijukugo {
     background-color: rgba($color: #fff, $alpha: 0.6);
     font-family: 'Noto Serif JP', serif;
-    margin: 15vh auto 0;
+    margin: 0 auto;
     padding: 2vw;
     width: $yojijukugo-fontsize * 6;
     border-radius: 1vw;
+    height: 100%;
+    max-height: 300px;
     &__kanji {
         font-weight: bold;
         font-size: $yojijukugo-fontsize;
@@ -46,15 +49,16 @@ $yojijukugo-fontsize: 7vh;
 }
 
 .stats {
+    align-self: center;
     z-index: 2;
-    height: 8vh;
-    padding-bottom: 1vh;
+    // height: 8vh;
+    // padding-bottom: 1vh;
     width: 100vw;
     background-color: rgba($color: #fff, $alpha: 0.45);
     color: rgba($color: #000, $alpha: 0.5);
     font-family: 'Noto Sans JP', sans-serif;
     text-align: right;
-    font-size: 4vh;
+    font-size: $yojijukugo-fontsize / 2;
     > span {
         padding-right: 1.5vmax;
     }
