@@ -1,4 +1,6 @@
 // DOM nodes
+
+const component = document.querySelector('.component');
 const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo__kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo__kana');
@@ -21,9 +23,8 @@ const weatherConditions = new Weather();
 
 function initializeUI() {
   // Sizing the window properly for mobile
-  const page = document.querySelector('.page');
   const innerViewportHeight = window.innerHeight;
-  page.style.height = `${innerViewportHeight}px`;
+  component.style.height = `${innerViewportHeight}px`;
 }
 
 initializeUI();
@@ -40,8 +41,7 @@ const updateWeatherUI = () => {
     videoBackground.src = `/../assets/backgrounds/${weatherConditions.weatherCode}.mp4`;
   }
   // Smaller screens get a still background image
-  const main = document.querySelector('.main');
-  main.style.backgroundImage = `url('/assets/backgrounds/${weatherConditions.weatherCode}.jpg'`;
+  component.style.backgroundImage = `url('/assets/backgrounds/${weatherConditions.weatherCode}.jpg'`;
 };
 
 const updateWeatherConditions = () => {

@@ -1,28 +1,27 @@
 //Fonts
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Serif+JP:wght@300;700&display=swap');
 
-.page{
-    background-image: url('../assets/backgrounds/01.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: auto 100vh;
-    background-color: #ccc;
-    height: 90vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    display: grid;
-    grid-template-rows: 93% 7%;
-}
-
 .video_background {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     min-width: 100vw;
     min-height: 100vh;
-    z-index: -1;
+}
+
+.component {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 90vh;
+    display: grid;
+    grid-template-rows: 0% 93% 7%;
+    overflow: hidden;
+    background-image: url('../assets/backgrounds/01.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #ccc;
 }
 
 $yojijukugo-fontsize: 7vh;
@@ -43,9 +42,11 @@ $yojijukugo-fontsize: 7vh;
         font-size: $yojijukugo-fontsize / 2.5;
         text-align: center;
     }
+    z-index: 2;
 }
 
 .stats {
+    z-index: 2;
     height: 8vh;
     padding-bottom: 1vh;
     width: 100vw;
