@@ -34,12 +34,12 @@ $yojijukugo-fontsize: 7vh;
     padding: 2vw;
     width: $yojijukugo-fontsize * 6;
     border-radius: 1vw;
-    .yojijukugo_kanji {
+    &__kanji {
         font-weight: bold;
         font-size: $yojijukugo-fontsize;
         text-align: center;
     }
-    .yojijukugo_kana {
+    &__kana {
         font-size: $yojijukugo-fontsize / 2.5;
         text-align: center;
     }

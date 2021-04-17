@@ -34,13 +34,13 @@
   border-radius: 1vw;
 }
 
-.yojijukugo .yojijukugo_kanji {
+.yojijukugo__kanji {
   font-weight: bold;
   font-size: 7vh;
   text-align: center;
 }
 
-.yojijukugo .yojijukugo_kana {
+.yojijukugo__kana {
   font-size: 2.8vh;
   text-align: center;
 }

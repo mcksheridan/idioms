@@ -1,8 +1,8 @@
 // DOM nodes
 const video = document.querySelector('.video');
-const yojijukugoKanji = document.querySelector('.yojijukugo_kanji');
-const yojijukugoKana = document.querySelector('.yojijukugo_kana');
-const yojijukugoImi = document.querySelector('.yojijukugo_imi');
+const yojijukugoKanji = document.querySelector('.yojijukugo__kanji');
+const yojijukugoKana = document.querySelector('.yojijukugo__kana');
+const yojijukugoImi = document.querySelector('.yojijukugo__imi');
 const audioPlayer = document.querySelector('.music__player');
 const playPause = document.querySelector('.music__control');
 const statsTemp = document.querySelector('.stats__temp');
