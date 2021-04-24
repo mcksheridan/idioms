@@ -19,6 +19,20 @@ $yojijukugo-fontsize: 4rem;
     background-color: #ccc;
 }
 
+.video {
+    &__control {
+        background-color: inherit;
+        color: inherit;
+    }
+    .material-icons {
+        font-size: 5vh;
+        vertical-align: middle;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
 .video_background {
     position: absolute;
     top: 0;
@@ -61,19 +75,5 @@ $yojijukugo-fontsize: 4rem;
     font-size: $yojijukugo-fontsize / 2;
     > span {
         padding-right: 1.5vmax;
-    }
-}
-
-.music {
-    &__control {
-        background-color: inherit;
-        color: inherit;
-    }
-    .material-icons {
-        font-size: 5vh;
-        vertical-align: middle;
-        &:hover {
-            cursor: pointer;
-        }
     }
 }

@@ -16,6 +16,20 @@
   background-color: #ccc;
 }
 
+.video__control {
+  background-color: inherit;
+  color: inherit;
+}
+
+.video .material-icons {
+  font-size: 5vh;
+  vertical-align: middle;
+}
+
+.video .material-icons:hover {
+  cursor: pointer;
+}
+
 .video_background {
   position: absolute;
   top: 0;
@@ -62,19 +76,5 @@
 
 .stats > span {
   padding-right: 1.5vmax;
-}
-
-.music__control {
-  background-color: inherit;
-  color: inherit;
-}
-
-.music .material-icons {
-  font-size: 5vh;
-  vertical-align: middle;
-}
-
-.music .material-icons:hover {
-  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

@@ -5,8 +5,7 @@ const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo__kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo__kana');
 const yojijukugoImi = document.querySelector('.yojijukugo__imi');
-const audioPlayer = document.querySelector('.music__player');
-const playPause = document.querySelector('.music__control');
+const playPause = document.querySelector('.video__control');
 const statsTemp = document.querySelector('.stats__temp');
 const statsDate = document.querySelector('.stats__date');
 const statsDay = document.querySelector('.stats__day');
@@ -96,11 +95,13 @@ updateYojijukugo();
 // Play or pause music
 playPause.addEventListener('click', () => {
   if (playPause.innerText === 'play_arrow') {
-    audioPlayer.play();
+    const videoBackground = document.querySelector('.video_background');
+    videoBackground.play();
     playPause.innerText = 'pause';
     playPause.setAttribute('aria-label', 'pause');
   } else {
-    audioPlayer.pause();
+    const videoBackground = document.querySelector('.video_background');
+    videoBackground.pause();
     playPause.innerText = 'play_arrow';
     playPause.setAttribute('aria-label', 'play');
   }
