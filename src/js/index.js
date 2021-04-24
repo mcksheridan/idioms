@@ -5,11 +5,6 @@ const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo__kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo__kana');
 const yojijukugoImi = document.querySelector('.yojijukugo__imi');
-const playPause = document.querySelector('.video__control');
-const statsTemp = document.querySelector('.stats__temp');
-const statsDate = document.querySelector('.stats__date');
-const statsDay = document.querySelector('.stats__day');
-const statsTime = document.querySelector('.stats__time');
 
 class Weather {
   constructor() {
@@ -23,10 +18,24 @@ const weatherConditions = new Weather();
 function initializeUI() {
   // Sizing the window properly for mobile
   const innerViewportHeight = window.innerHeight;
-  component.style.height = `${innerViewportHeight}px`;
+  component.style.maxheight = `${innerViewportHeight}px`;
+  // Progressive enhancement: if no JS, footer will be empty
+  const footer = document.querySelector('.stats');
+  const footerHtml = `<button type="button" class="material-icons video__control" aria-label="ポーズ">pause</button>
+  <span class="stats__temp"></span>
+  <span class="stats__date"></span>
+  <span class="stats__day"></span>
+  <span class="stats__time"></span>`;
+  footer.innerHTML = footerHtml;
 }
 
 initializeUI();
+
+const playPause = document.querySelector('.video__control');
+const statsTemp = document.querySelector('.stats__temp');
+const statsDate = document.querySelector('.stats__date');
+const statsDay = document.querySelector('.stats__day');
+const statsTime = document.querySelector('.stats__time');
 
 const updateWeatherUI = () => {
   // Set temperature
