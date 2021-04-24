@@ -3,7 +3,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 90vh;
+  height: 100vh;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 15% 75% 10%;
