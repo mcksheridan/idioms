@@ -6,3 +6,5 @@
 *.DS_store
 node_modules
 .env
+
+src/assets/backgrounds/oversized/
