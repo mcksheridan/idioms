@@ -31,13 +31,12 @@ function initializeUI() {
 
 initializeUI();
 
-const playPause = document.querySelector('.video__control');
-const statsTemp = document.querySelector('.stats__temp');
 const statsDate = document.querySelector('.stats__date');
 const statsDay = document.querySelector('.stats__day');
 const statsTime = document.querySelector('.stats__time');
 
 const updateWeatherUI = () => {
+  const statsTemp = document.querySelector('.stats__temp');
   // Set temperature
   statsTemp.textContent = `${(weatherConditions.temperature - 273.15).toFixed(0)}°C`;
   // Set weather background
@@ -102,6 +101,7 @@ updateYojijukugo();
 // Bottom menu bar
 
 // Play or pause music
+const playPause = document.querySelector('.video__control');
 playPause.addEventListener('click', () => {
   if (playPause.innerText === 'play_arrow') {
     const videoBackground = document.querySelector('.video_background');
