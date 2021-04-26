@@ -38,8 +38,7 @@ const statsTime = document.querySelector('.stats__time');
 
 const updateWeatherUI = () => {
   const statsTemp = document.querySelector('.stats__temp');
-  // Set temperature
-  statsTemp.textContent = `${(weatherConditions.temperature - 273.15).toFixed(0)}°C`;
+  statsTemp.textContent = `${weatherConditions.temperature}°C`;
   // Set weather background
   const mediaQuery = window.matchMedia('(min-device-width: 1200px)');
   // Only set video background for large screens
@@ -62,7 +61,8 @@ const updateWeatherConditions = () => {
       )
         .then((response) => response.json())
         .then((data) => {
-          weatherConditions.temperature = data.main.temp;
+          const temperature = (data.main.temp - 273.15).toFixed(0);
+          weatherConditions.temperature = temperature;
           weatherConditions.weatherCode = data.weather[0].icon.slice(0, 2);
           updateWeatherUI();
         });
