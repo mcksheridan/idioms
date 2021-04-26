@@ -11,6 +11,43 @@ class Weather {
   constructor() {
     this.temperature = undefined;
     this.weatherCode = undefined;
+    this.today = new Date();
+    this.month = this.today.getMonth() + 1;
+    this.date = this.today.getDate();
+    this.day = this.today.getDay();
+    this.hour = this.today.getHours();
+    this.minute = this.today.getMinutes();
+  }
+
+  getDayOfTheWeek() {
+    if (this.day === 1) {
+      return '月';
+    }
+    if (this.day === 2) {
+      return '火';
+    }
+    if (this.day === 3) {
+      return '水';
+    }
+    if (this.day === 4) {
+      return '木';
+    }
+    if (this.day === 5) {
+      return '金';
+    }
+    if (this.day === 6) {
+      return '土';
+    }
+    return '日';
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  getFormattedTime(timeUnit) {
+    if (timeUnit > 10) {
+      return timeUnit;
+    }
+    const formattedTime = `0${timeUnit}`;
+    return formattedTime;
   }
 }
 
@@ -28,13 +65,15 @@ function initializeUI() {
   <span class="stats__day"></span>
   <span class="stats__time"></span>`;
   footer.innerHTML = footerHtml;
+  const statsDate = document.querySelector('.stats__date');
+  const statsDay = document.querySelector('.stats__day');
+  const statsTime = document.querySelector('.stats__time');
+  statsDate.textContent = `${weatherConditions.month}月${weatherConditions.date}日`;
+  statsDay.textContent = weatherConditions.getDayOfTheWeek();
+  statsTime.textContent = `${weatherConditions.getFormattedTime(weatherConditions.hour)}:${weatherConditions.getFormattedTime(weatherConditions.minute)}`;
 }
 
 initializeUI();
-
-const statsDate = document.querySelector('.stats__date');
-const statsDay = document.querySelector('.stats__day');
-const statsTime = document.querySelector('.stats__time');
 
 const updateWeatherUI = () => {
   const statsTemp = document.querySelector('.stats__temp');
@@ -117,50 +156,3 @@ playPause.addEventListener('click', () => {
     playPause.setAttribute('aria-label', 'プレー');
   }
 });
-
-// Day/Time
-const today = new Date();
-// Month and day (date)
-const month = today.getMonth() + 1;
-const date = today.getDate();
-statsDate.innerText = `${month}月${date}日`;
-// Day of the week
-function day() {
-  const dayNumber = today.getDay();
-  let dayWord = '日';
-  if (dayNumber === 1) {
-    dayWord = '月';
-  } else if (dayNumber === 2) {
-    dayWord = '火';
-  } else if (dayNumber === 3) {
-    dayWord = '水';
-  } else if (dayNumber === 4) {
-    dayWord = '木';
-  } else if (dayNumber === 5) {
-    dayWord = '金';
-  } else if (dayNumber === 6) {
-    dayWord = '土';
-  }
-  statsDay.innerText = dayWord;
-}
-day();
-
-function time() {
-  const hourData = today.getHours();
-  let hour = '0';
-  if (hourData < 10) {
-    hour += hourData;
-  } else {
-    hour = hourData;
-  }
-  const minuteData = today.getMinutes();
-  let minute = '0';
-  if (minuteData < 10) {
-    minute += minuteData;
-  } else {
-    minute = minuteData;
-  }
-  statsTime.innerText = `${hour}:${minute}`;
-}
-
-time();
