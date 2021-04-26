@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import yojijukugo from './yojijukugo';
 
 dotenv.config();
@@ -9,6 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'src')));
 
 app.get('/', (req, res) => {
