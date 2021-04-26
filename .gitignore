@@ -1,5 +1,3 @@
-*.css.map
-*.map
 *.prettierignore
 *.prettierrc.json
 *.eslintrc.js
