@@ -9,6 +9,7 @@ const APP_URL = 'https://idioms.herokuapp.com/';
 
 class Weather {
   constructor() {
+    this.state = 'Uninitialized'; // Uninitialized, active, or paused
     this.temperature = undefined;
     this.weatherCode = undefined;
     this.today = new Date();
@@ -138,21 +139,26 @@ async function updateYojijukugo() {
 
 updateYojijukugo();
 
-// Bottom menu bar
-
 // Play or pause music
 const playPause = document.querySelector('.video__control');
 playPause.addEventListener('click', () => {
-  if (playPause.innerText === 'play_arrow') {
+  if (weatherConditions.state === 'Uninitialized') {
     updateWeatherConditions();
+    weatherConditions.state = 'Active';
+  }
+  if (weatherConditions.state === 'Active') {
     const videoBackground = document.querySelector('.video_background');
     videoBackground.play();
     playPause.innerText = 'pause';
     playPause.setAttribute('aria-label', 'ポーズ');
-  } else {
+    weatherConditions.state = 'Paused';
+    return;
+  }
+  if (weatherConditions.state === 'Paused') {
     const videoBackground = document.querySelector('.video_background');
     videoBackground.pause();
     playPause.innerText = 'play_arrow';
     playPause.setAttribute('aria-label', 'プレー');
+    weatherConditions.state = 'Active';
   }
 });
