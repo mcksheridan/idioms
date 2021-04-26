@@ -152,6 +152,11 @@ playPause.addEventListener('click', () => {
   }
   if (weatherConditions.state === 'Active') {
     const videoBackground = document.querySelector('.video_background');
+    if (!videoBackground) {
+      playPause.innerText = 'error';
+      playPause.setAttribute('aria-label', 'エラー');
+      return;
+    }
     videoBackground.play();
     playPause.innerText = 'pause';
     playPause.setAttribute('aria-label', 'ポーズ');
