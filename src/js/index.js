@@ -5,6 +5,7 @@ const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo__kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo__kana');
 const yojijukugoImi = document.querySelector('.yojijukugo__imi');
+const APP_URL = 'https://idioms.herokuapp.com/';
 
 class Weather {
   constructor() {
@@ -57,7 +58,7 @@ const updateWeatherConditions = () => {
       const { latitude } = position.coords;
       const { longitude } = position.coords;
       fetch(
-        `http://localhost:3000/weather?lat=${latitude}&lon=${longitude}`,
+        `${APP_URL}weather?lat=${latitude}&lon=${longitude}`,
       )
         .then((response) => response.json())
         .then((data) => {
@@ -84,7 +85,7 @@ async function updateYojijukugo() {
     sessionStorage.getItem('jukugo') === 'undefined'
     || sessionStorage.getItem('jukugo') === null
   ) {
-    const yojijukugoResponse = await fetch('http://localhost:3000/yojijukugo');
+    const yojijukugoResponse = await fetch(`${APP_URL}yojijukugo`);
     const yojijukugoData = await yojijukugoResponse.json();
     const { jukugo } = await yojijukugoData[1];
     const { yomi } = await yojijukugoData[0];
