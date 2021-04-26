@@ -60,7 +60,7 @@ function initializeUI() {
   component.style.maxheight = `${innerViewportHeight}px`;
   // Progressive enhancement: if no JS, footer will be empty
   const footer = document.querySelector('.stats');
-  const footerHtml = `<button type="button" class="material-icons video__control" aria-label="プレー">play_arrow</button>
+  const footerHtml = `<button type="button" class="material-icons video__control" aria-label="位置情報">location_on</button>
   <span class="stats__temp"></span>
   <span class="stats__date"></span>
   <span class="stats__day"></span>
@@ -86,6 +86,7 @@ const updateWeatherUI = () => {
     video.innerHTML = '<video src="" type="video/mp4" class="video_background" autoplay loop muted></video>';
     const videoBackground = document.querySelector('.video_background');
     videoBackground.src = `/../assets/backgrounds/${weatherConditions.weatherCode}.mp4`;
+    videoBackground.pause();
   }
   // Smaller screens get a still background image
   component.style.backgroundImage = `url('/assets/backgrounds/${weatherConditions.weatherCode}.jpg'`;
@@ -144,7 +145,10 @@ const playPause = document.querySelector('.video__control');
 playPause.addEventListener('click', () => {
   if (weatherConditions.state === 'Uninitialized') {
     updateWeatherConditions();
+    playPause.innerText = 'play_arrow';
+    playPause.setAttribute('aria-label', 'プレー');
     weatherConditions.state = 'Active';
+    return;
   }
   if (weatherConditions.state === 'Active') {
     const videoBackground = document.querySelector('.video_background');
