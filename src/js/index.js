@@ -22,7 +22,7 @@ function initializeUI() {
   component.style.maxheight = `${innerViewportHeight}px`;
   // Progressive enhancement: if no JS, footer will be empty
   const footer = document.querySelector('.stats');
-  const footerHtml = `<button type="button" class="material-icons video__control" aria-label="ポーズ">pause</button>
+  const footerHtml = `<button type="button" class="material-icons video__control" aria-label="プレー">play_arrow</button>
   <span class="stats__temp"></span>
   <span class="stats__date"></span>
   <span class="stats__day"></span>
@@ -52,25 +52,25 @@ const updateWeatherUI = () => {
 };
 
 const updateWeatherConditions = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      const { latitude } = position.coords;
-      const { longitude } = position.coords;
-      fetch(
-        `${APP_URL}weather?lat=${latitude}&lon=${longitude}`,
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          const temperature = (data.main.temp - 273.15).toFixed(0);
-          weatherConditions.temperature = temperature;
-          weatherConditions.weatherCode = data.weather[0].icon.slice(0, 2);
-          updateWeatherUI();
-        });
-    });
+  if (weatherConditions.temperature === undefined) {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude } = position.coords;
+        const { longitude } = position.coords;
+        fetch(
+          `${APP_URL}weather?lat=${latitude}&lon=${longitude}`,
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const temperature = (data.main.temp - 273.15).toFixed(0);
+            weatherConditions.temperature = temperature;
+            weatherConditions.weatherCode = data.weather[0].icon.slice(0, 2);
+            updateWeatherUI();
+          });
+      });
+    }
   }
 };
-
-updateWeatherConditions();
 
 const updateYojijukugoUI = () => {
   yojijukugoKanji.textContent = JSON.parse(sessionStorage.getItem('jukugo'));
@@ -105,15 +105,16 @@ updateYojijukugo();
 const playPause = document.querySelector('.video__control');
 playPause.addEventListener('click', () => {
   if (playPause.innerText === 'play_arrow') {
+    updateWeatherConditions();
     const videoBackground = document.querySelector('.video_background');
     videoBackground.play();
     playPause.innerText = 'pause';
-    playPause.setAttribute('aria-label', 'pause');
+    playPause.setAttribute('aria-label', 'ポーズ');
   } else {
     const videoBackground = document.querySelector('.video_background');
     videoBackground.pause();
     playPause.innerText = 'play_arrow';
-    playPause.setAttribute('aria-label', 'play');
+    playPause.setAttribute('aria-label', 'プレー');
   }
 });
 
