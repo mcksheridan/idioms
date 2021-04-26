@@ -12,3 +12,5 @@ src/assets/backgrounds/oversized/
 src/assets/old
 
 src/assets/backgrounds/videos/
+# Local Netlify folder
+.netlify
