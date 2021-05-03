@@ -44,7 +44,7 @@ class Weather {
 
   // eslint-disable-next-line class-methods-use-this
   getFormattedTime(timeUnit) {
-    if (timeUnit > 10) {
+    if (timeUnit > 9) {
       return timeUnit;
     }
     const formattedTime = `0${timeUnit}`;
