@@ -5,7 +5,7 @@ const video = document.querySelector('.video');
 const yojijukugoKanji = document.querySelector('.yojijukugo__kanji');
 const yojijukugoKana = document.querySelector('.yojijukugo__kana');
 const yojijukugoImi = document.querySelector('.yojijukugo__imi');
-const APP_URL = 'https://idioms.herokuapp.com/';
+const APP_URL = 'https://idioms.onrender.com/';
 
 class Weather {
   constructor() {
